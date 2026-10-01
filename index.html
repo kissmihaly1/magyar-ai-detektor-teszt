@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magyar AI-detektor teszt 2026: melyik a legjobb? | HuDetect-1k</title>
+  <meta name="description" content="Hét AI-detektort mértünk 1000 magyar szövegen. A Preds 3 99,6% pontosságot ért el, és egyetlen emberi szöveget sem jelölt tévesen AI-nak. Nyílt adatok.">
+  <link rel="canonical" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <link rel="alternate" hreflang="hu" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <link rel="alternate" hreflang="en" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/en/">
+  <link rel="alternate" hreflang="x-default" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="google-site-verification" content="EeZK-_CQrS5XIvw5tEUv60p1ZxAiYVGBe6EfpATTBhE">
+  <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1510" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Magyar AI-detektor benchmark">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <meta property="og:title" content="Melyik a legjobb AI-detektor magyar nyelvre? Nyílt mérés 1000 szövegen">
+  <meta property="og:description" content="A Preds 3 99,6% pontossággal nyerte a HuDetect-1k tesztet, és egyetlen emberi szöveget sem jelölt tévesen AI-nak. Hat ismert versenytárssal összevetve.">
+  <meta property="og:image" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-hu.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Magyar AI-detektor ranglista: Preds 3 99,6% pontosság">
+  <meta property="article:published_time" content="2026-10-01">
+  <meta property="article:modified_time" content="2026-10-01">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/#website",
+        "url": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/",
+        "name": "Magyar AI-detektor benchmark",
+        "inLanguage": [
+          "hu-HU",
+          "en"
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/#article",
+        "headline": "Melyik a legjobb AI-detektor magyar nyelvre? Nyílt mérés 1000 szövegen",
+        "description": "Hét AI-detektor összehasonlítása a HuDetect-1k nyílt magyar adathalmazon. A Preds 3 99,6% pontosságot, 0% téves pozitív arányt és 0,9996 AUROC értéket ért el.",
+        "inLanguage": "hu-HU",
+        "datePublished": "2026-10-01",
+        "dateModified": "2026-10-01",
+        "mainEntityOfPage": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/",
+        "image": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-hu.png",
+        "isBasedOn": "https://huggingface.co/datasets/mihalykiss/GenAIDetectHU",
+        "about": {
+          "@type": "Thing",
+          "name": "AI-szövegdetektálás"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Melyik a legjobb AI-detektor magyar nyelvre?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A HuDetect-1k mérésben a Preds 3 érte el a legjobb eredményt minden mutatóban: 99,6% pontosság, 0% téves vád és 0,9996 AUROC. A második helyen a GPTZero végzett 90,1%-os pontossággal. A mérés nyílt adatokon készült, ezért bárki ellenőrizheti."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Megbízható az AI-detektor szakdolgozat ellenőrzésére?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Csak akkor, ha nagyon ritkán vádol meg tévesen embert. A mérésben két népszerű eszköz is nagyjából minden harmadik emberi szöveget AI-nak jelölt, ami szakdolgozatnál elfogadhatatlan. A Preds 3 egyetlen emberi szöveget sem jelölt tévesen. Az eredmény ettől még jelzés, nem bizonyíték, ezért érdemes beszélgetéssel és a korábbi munkákkal együtt értékelni."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Miért a téves vádak aránya a legfontosabb mutató?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Egy kimaradt AI-szöveg bosszantó, de egy tévesen megvádolt ember komoly kárt szenvedhet: rossz jegyet, fegyelmi eljárást vagy elvesztett állásajánlatot. A jó detektornak ezért először az emberi szövegeket kell békén hagynia, és csak utána kell minél több AI-szöveget elkapnia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Felismeri a ChatGPT, a Claude és a Gemini által írt szövegeket?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Igen. A tesztben 11 különböző nyelvi modell írta az AI-szövegeket, köztük a GPT-5.6, a Gemini 3.8 Flash, a Claude Haiku 4.5, a DeepSeek V4 és a Llama 4. A Preds 3 az 500 gépi szövegből 496-ot ismert fel helyesen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Melyik AI-detektor használható ingyen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A tesztelt eszközök többsége kínál ingyenes keretet, de magyar szövegen nagyon eltérően teljesítenek. A mérés győztese, a Preds 3, naponta 2 ingyenes kreditet ad, egy kredit legfeljebb 1000 szót fed le."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hogyan ellenőrizhetem az eredményeket?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Töltsd le a HuDetect-1k adathalmazt a Hugging Face-ről, futtasd le rajta a detektort, és számold ki a mutatókat. A módszertan oldalon egy rövid Python-kód is segít. A részletes eredmények CSV és JSON formátumban is letölthetők."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ki készítette a mérést?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Az adathalmazt és a mérést a Preds fejlesztője készítette. Mivel a Preds is szerepel a versenyzők között, minden adat nyilvános: az 1000 szöveg, a címkék és a detektoronkénti eredmények is, így bárki ellenőrizheti és megismételheti a mérést."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="./">
+        <img src="assets/logo.svg" alt="" width="30" height="30">
+        <span>Magyar AI-detektor benchmark<small>HuDetect-1k, 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="#ranglista">Ranglista</a>
+        <a href="modszertan/">Módszertan</a>
+        <a href="szakdolgozat-ai-ellenorzes/">Szakdolgozat</a>
+        <a href="ai-detektor-valasztas/">Választási útmutató</a>
+        <a href="en/" hreflang="en" lang="en">English</a>
+      </nav>
+      <a class="btn btn-primary btn-small header-cta" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Nyílt mérés 1000 magyar szövegen</span>
+          <h1>Melyik a legjobb <em>AI-detektor</em> magyar nyelvre?</h1>
+          <p class="lead">Hét ismert AI-detektort mértünk le ugyanazon az 1000 magyar szövegen. A <a href="https://preds.hu/">Preds 3</a>, a kifejezetten magyar nyelvre készült AI-detektor, 99,6%-os pontossággal végzett az élen, és az 500 ember által írt szöveg közül egyet sem jelölt tévesen AI-generáltnak.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#ranglista">Ranglista megtekintése</a>
+            <a class="btn btn-ghost" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz letöltése</a>
+          </div>
+          <p class="hero-note">Az adathalmaz nyílt (CC BY 4.0), és szabadon letölthető a <a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Hugging Face-ről</a>, így a mérést bárki megismételheti.</p>
+        </div>
+
+        <aside class="score-card" aria-label="A győztes eredménye">
+          <div class="score-top">
+            <span>Preds 3</span>
+            <span class="pill">1. hely</span>
+          </div>
+          <p class="score-big">99,6%</p>
+          <p class="score-label">pontosság 1000 magyar szövegen</p>
+          <div class="score-stats">
+            <div><strong>0 / 500</strong><span>emberi szöveget jelölt tévesen AI-nak</span></div>
+            <div><strong>0,9996</strong><span>AUROC, közel a tökéletes 1,0-hoz</span></div>
+          </div>
+          <div class="compare" aria-label="Pontosság összevetése">
+            <div class="compare-row is-ours"><span>Preds 3</span><span class="compare-track"><span style="--w:99.6%"></span></span><b>99,6%</b></div>
+            <div class="compare-row"><span>GPTZero, 2. hely</span><span class="compare-track"><span style="--w:90.1%"></span></span><b>90,1%</b></div>
+            <div class="compare-row"><span>Többiek átlaga</span><span class="compare-track"><span style="--w:73.6%"></span></span><b>73,6%</b></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="facts">
+        <div><strong>1000</strong><span>magyar szöveg</span></div>
+        <div><strong>500 + 500</strong><span>ember és AI által írt</span></div>
+        <div><strong>11</strong><span>nyelvi modell írta a gépi szövegeket</span></div>
+        <div><strong>9</strong><span>témakör a hírektől a jogi szövegekig</span></div>
+        <div><strong>7</strong><span>AI-detektor ugyanazon a teszten</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="ranglista">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Ranglista</span>
+            <h2>Az eredmények egy táblázatban</h2>
+          </div>
+          <p>A pontosság azt mutatja, hány szöveget sorolt be helyesen a detektor. A téves vád (FPR) az emberi szövegek AI-nak jelölt aránya, az átengedett AI (FNR) pedig a gépi szövegek emberinek hitt aránya. Ezeknél az alacsonyabb érték a jobb.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="board" data-sortable>
+            <caption class="sr-only">AI-detektorok eredményei a HuDetect-1k magyar adathalmazon</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-dir="ascending"><button type="button">#</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">Detektor</button></th>
+                <th scope="col" aria-sort="descending"><button type="button">Pontosság</button></th>
+                <th scope="col"><button type="button">F1</button></th>
+                <th scope="col"><button type="button">AUROC</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">Téves vád (FPR)</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">Átengedett AI (FNR)</button></th>
+              </tr>
+            </thead>
+            <tbody>
+<!-- build:leaderboard-hu -->
+<tr class="is-ours"><td class="rank" data-value="1">1</td><th scope="row" data-value="Preds 3">Preds 3 <span class="tag">Legjobb</span></th><td data-value="99.6"><span class="cell-bar" style="--w:99.6%"></span>99,6%</td><td data-value="99.6">99,60%</td><td data-value="0.9996">0,9996</td><td data-value="0.0">0,0%</td><td data-value="0.8">0,8%</td></tr>
+<tr><td class="rank" data-value="2">2</td><th scope="row" data-value="GPTZero">GPTZero</th><td data-value="90.1"><span class="cell-bar" style="--w:90.1%"></span>90,1%</td><td data-value="89.04">89,04%</td><td data-value="0.9923">0,9923</td><td data-value="0.2">0,2%</td><td data-value="19.6">19,6%</td></tr>
+<tr><td class="rank" data-value="3">3</td><th scope="row" data-value="Originality.ai">Originality.ai</th><td data-value="82.0"><span class="cell-bar" style="--w:82.0%"></span>82,0%</td><td data-value="84.29">84,29%</td><td data-value="0.9574">0,9574</td><td data-value="32.6">32,6%</td><td data-value="3.4">3,4%</td></tr>
+<tr><td class="rank" data-value="4">4</td><th scope="row" data-value="Plag.hu">Plag.hu</th><td data-value="76.5"><span class="cell-bar" style="--w:76.5%"></span>76,5%</td><td data-value="69.44">69,44%</td><td data-value="0.948">0,9480</td><td data-value="0.4">0,4%</td><td data-value="46.6">46,6%</td></tr>
+<tr><td class="rank" data-value="5">5</td><th scope="row" data-value="isgen.ai">isgen.ai</th><td data-value="65.5"><span class="cell-bar" style="--w:65.5%"></span>65,5%</td><td data-value="48.43">48,43%</td><td data-value="0.7317">0,7317</td><td data-value="1.4">1,4%</td><td data-value="67.6">67,6%</td></tr>
+<tr><td class="rank" data-value="6">6</td><th scope="row" data-value="ZeroGPT">ZeroGPT</th><td data-value="64.7"><span class="cell-bar" style="--w:64.7%"></span>64,7%</td><td data-value="64.52">64,52%</td><td data-value="0.6911">0,6911</td><td data-value="34.8">34,8%</td><td data-value="35.8">35,8%</td></tr>
+<tr><td class="rank" data-value="7">7</td><th scope="row" data-value="Smodin">Smodin</th><td data-value="62.9"><span class="cell-bar" style="--w:62.9%"></span>62,9%</td><td data-value="41.39">41,39%</td><td data-value="0.7655">0,7655</td><td data-value="0.4">0,4%</td><td data-value="73.8">73,8%</td></tr>
+<!-- /build:leaderboard-hu -->
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Kattints egy oszlop nevére a rendezéshez. A teljes eredmények letölthetők <a href="data/results.csv">CSV</a> és <a href="data/results.json">JSON</a> formátumban is. Mérés ideje: 2026. szeptember.</p>
+        <p class="disclosure"><strong>Átláthatóság:</strong> az adathalmazt és a mérést a Preds fejlesztője készítette. Ezért nyilvános minden szöveg, címke és eredmény, hogy bárki ellenőrizhesse.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="metrikak">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Metrikánként</span>
+            <h2>Mind az öt mutatóban a Preds 3 vezet</h2>
+          </div>
+          <p>Egy detektort nem elég egyetlen számmal megítélni. Van, amelyik senkit sem vádol meg, de az AI-szövegek nagy részét átengedi, és van, amelyik mindent elkap, de közben embereket is megvádol. Az alábbi grafikonokon minden mutató külön is látszik.</p>
+        </div>
+
+        <div class="chart-card">
+          <div class="tabs" role="tablist" aria-label="Mutató kiválasztása">
+<!-- build:metric-tabs -->
+<button type="button" role="tab" id="tab-accuracy" aria-controls="panel-accuracy" aria-selected="true">Pontosság</button>
+<button type="button" role="tab" id="tab-f1" aria-controls="panel-f1" aria-selected="false" tabindex="-1">F1</button>
+<button type="button" role="tab" id="tab-auroc" aria-controls="panel-auroc" aria-selected="false" tabindex="-1">AUROC</button>
+<button type="button" role="tab" id="tab-fpr" aria-controls="panel-fpr" aria-selected="false" tabindex="-1">Téves vád (FPR)</button>
+<button type="button" role="tab" id="tab-fnr" aria-controls="panel-fnr" aria-selected="false" tabindex="-1">Átengedett AI (FNR)</button>
+<!-- /build:metric-tabs -->
+          </div>
+<!-- build:metric-panels -->
+<div class="panel" role="tabpanel" id="panel-accuracy" aria-labelledby="tab-accuracy"><p class="panel-hint">Pontosság: magasabb a jobb</p><ol class="bars">
+<li class="is-ours"><span class="bar-label">Preds 3</span><span class="bar-track"><span class="bar-fill" style="--w:99.60%"></span></span><span class="bar-value">99,6%</span></li>
+<li><span class="bar-label">GPTZero</span><span class="bar-track"><span class="bar-fill" style="--w:90.10%"></span></span><span class="bar-value">90,1%</span></li>
+<li><span class="bar-label">Originality.ai</span><span class="bar-track"><span class="bar-fill" style="--w:82.00%"></span></span><span class="bar-value">82,0%</span></li>
+<li><span class="bar-label">Plag.hu</span><span class="bar-track"><span class="bar-fill" style="--w:76.50%"></span></span><span class="bar-value">76,5%</span></li>
+<li><span class="bar-label">isgen.ai</span><span class="bar-track"><span class="bar-fill" style="--w:65.50%"></span></span><span class="bar-value">65,5%</span></li>
+<li><span class="bar-label">ZeroGPT</span><span class="bar-track"><span class="bar-fill" style="--w:64.70%"></span></span><span class="bar-value">64,7%</span></li>
+<li><span class="bar-label">Smodin</span><span class="bar-track"><span class="bar-fill" style="--w:62.90%"></span></span><span class="bar-value">62,9%</span></li>
+</ol></div>
+<div class="panel" role="tabpanel" id="panel-f1" aria-labelledby="tab-f1" hidden><p class="panel-hint">F1: magasabb a jobb</p><ol class="bars">
+<li class="is-ours"><span class="bar-label">Preds 3</span><span class="bar-track"><span class="bar-fill" style="--w:99.60%"></span></span><span class="bar-value">99,60%</span></li>
+<li><span class="bar-label">GPTZero</span><span class="bar-track"><span class="bar-fill" style="--w:89.04%"></span></span><span class="bar-value">89,04%</span></li>
+<li><span class="bar-label">Originality.ai</span><span class="bar-track"><span class="bar-fill" style="--w:84.29%"></span></span><span class="bar-value">84,29%</span></li>
+<li><span class="bar-label">Plag.hu</span><span class="bar-track"><span class="bar-fill" style="--w:69.44%"></span></span><span class="bar-value">69,44%</span></li>
+<li><span class="bar-label">ZeroGPT</span><span class="bar-track"><span class="bar-fill" style="--w:64.52%"></span></span><span class="bar-value">64,52%</span></li>
+<li><span class="bar-label">isgen.ai</span><span class="bar-track"><span class="bar-fill" style="--w:48.43%"></span></span><span class="bar-value">48,43%</span></li>
+<li><span class="bar-label">Smodin</span><span class="bar-track"><span class="bar-fill" style="--w:41.39%"></span></span><span class="bar-value">41,39%</span></li>
+</ol></div>
+<div class="panel" role="tabpanel" id="panel-auroc" aria-labelledby="tab-auroc" hidden><p class="panel-hint">AUROC: magasabb a jobb</p><ol class="bars">
+<li class="is-ours"><span class="bar-label">Preds 3</span><span class="bar-track"><span class="bar-fill" style="--w:99.96%"></span></span><span class="bar-value">0,9996</span></li>
+<li><span class="bar-label">GPTZero</span><span class="bar-track"><span class="bar-fill" style="--w:99.23%"></span></span><span class="bar-value">0,9923</span></li>
+<li><span class="bar-label">Originality.ai</span><span class="bar-track"><span class="bar-fill" style="--w:95.74%"></span></span><span class="bar-value">0,9574</span></li>
+<li><span class="bar-label">Plag.hu</span><span class="bar-track"><span class="bar-fill" style="--w:94.80%"></span></span><span class="bar-value">0,9480</span></li>
+<li><span class="bar-label">Smodin</span><span class="bar-track"><span class="bar-fill" style="--w:76.55%"></span></span><span class="bar-value">0,7655</span></li>
+<li><span class="bar-label">isgen.ai</span><span class="bar-track"><span class="bar-fill" style="--w:73.17%"></span></span><span class="bar-value">0,7317</span></li>
+<li><span class="bar-label">ZeroGPT</span><span class="bar-track"><span class="bar-fill" style="--w:69.11%"></span></span><span class="bar-value">0,6911</span></li>
+</ol></div>
+<div class="panel" role="tabpanel" id="panel-fpr" aria-labelledby="tab-fpr" hidden><p class="panel-hint">Téves vád (FPR): alacsonyabb a jobb</p><ol class="bars">
+<li class="is-ours"><span class="bar-label">Preds 3</span><span class="bar-track"><span class="bar-fill" style="--w:0.40%"></span></span><span class="bar-value">0,0%</span></li>
+<li><span class="bar-label">GPTZero</span><span class="bar-track"><span class="bar-fill" style="--w:0.40%"></span></span><span class="bar-value">0,2%</span></li>
+<li><span class="bar-label">Plag.hu</span><span class="bar-track"><span class="bar-fill" style="--w:0.40%"></span></span><span class="bar-value">0,4%</span></li>
+<li><span class="bar-label">Smodin</span><span class="bar-track"><span class="bar-fill" style="--w:0.40%"></span></span><span class="bar-value">0,4%</span></li>
+<li><span class="bar-label">isgen.ai</span><span class="bar-track"><span class="bar-fill" style="--w:1.40%"></span></span><span class="bar-value">1,4%</span></li>
+<li><span class="bar-label">Originality.ai</span><span class="bar-track"><span class="bar-fill" style="--w:32.60%"></span></span><span class="bar-value">32,6%</span></li>
+<li><span class="bar-label">ZeroGPT</span><span class="bar-track"><span class="bar-fill" style="--w:34.80%"></span></span><span class="bar-value">34,8%</span></li>
+</ol></div>
+<div class="panel" role="tabpanel" id="panel-fnr" aria-labelledby="tab-fnr" hidden><p class="panel-hint">Átengedett AI (FNR): alacsonyabb a jobb</p><ol class="bars">
+<li class="is-ours"><span class="bar-label">Preds 3</span><span class="bar-track"><span class="bar-fill" style="--w:0.80%"></span></span><span class="bar-value">0,8%</span></li>
+<li><span class="bar-label">Originality.ai</span><span class="bar-track"><span class="bar-fill" style="--w:3.40%"></span></span><span class="bar-value">3,4%</span></li>
+<li><span class="bar-label">GPTZero</span><span class="bar-track"><span class="bar-fill" style="--w:19.60%"></span></span><span class="bar-value">19,6%</span></li>
+<li><span class="bar-label">ZeroGPT</span><span class="bar-track"><span class="bar-fill" style="--w:35.80%"></span></span><span class="bar-value">35,8%</span></li>
+<li><span class="bar-label">Plag.hu</span><span class="bar-track"><span class="bar-fill" style="--w:46.60%"></span></span><span class="bar-value">46,6%</span></li>
+<li><span class="bar-label">isgen.ai</span><span class="bar-track"><span class="bar-fill" style="--w:67.60%"></span></span><span class="bar-value">67,6%</span></li>
+<li><span class="bar-label">Smodin</span><span class="bar-track"><span class="bar-fill" style="--w:73.80%"></span></span><span class="bar-value">73,8%</span></li>
+</ol></div>
+<!-- /build:metric-panels -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gyakorlatban">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Mit jelent ez a gyakorlatban?</span>
+            <h2>Hány ártatlan szöveget vádol meg egy detektor?</h2>
+          </div>
+          <p>A százalékok mögött valódi szövegek vannak. Az alábbi ábrákon minden négyzet egy szöveget jelöl a tesztből, a kitöltött négyzetek pedig a hibákat.</p>
+        </div>
+
+        <div class="waffle-cols">
+        <div class="waffle-block">
+          <h3>Téves vádak 500 ember által írt szövegen</h3>
+          <p>Képzelj el egy évfolyamot, ahol 500 hallgató saját maga írja meg a beadandóját. Ennyi hallgatót gyanúsítana meg tévesen az adott detektor. A Preds 3 egyetlen emberi szöveget sem jelölt AI-nak, a ZeroGPT és az Originality.ai viszont nagyjából minden harmadikat.</p>
+          <ul class="waffles">
+<!-- build:waffles-fp -->
+<li class="is-ours"><div class="waffle-head"><span class="waffle-name">Preds 3</span><span class="waffle-count"><strong>0</strong> / 500</span></div><span class="waffle" role="img" aria-label="0 / 500" style="--full:0;--part:0"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">GPTZero</span><span class="waffle-count"><strong>1</strong> / 500</span></div><span class="waffle" role="img" aria-label="1 / 500" style="--full:0;--part:1"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Plag.hu</span><span class="waffle-count"><strong>2</strong> / 500</span></div><span class="waffle" role="img" aria-label="2 / 500" style="--full:0;--part:2"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Smodin</span><span class="waffle-count"><strong>2</strong> / 500</span></div><span class="waffle" role="img" aria-label="2 / 500" style="--full:0;--part:2"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">isgen.ai</span><span class="waffle-count"><strong>7</strong> / 500</span></div><span class="waffle" role="img" aria-label="7 / 500" style="--full:0;--part:7"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Originality.ai</span><span class="waffle-count"><strong>163</strong> / 500</span></div><span class="waffle" role="img" aria-label="163 / 500" style="--full:3;--part:13"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">ZeroGPT</span><span class="waffle-count"><strong>174</strong> / 500</span></div><span class="waffle" role="img" aria-label="174 / 500" style="--full:3;--part:24"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<!-- /build:waffles-fp -->
+          </ul>
+        </div>
+
+        <div class="waffle-block">
+          <h3>Átengedett AI-szövegek 500 gépi szövegen</h3>
+          <p>A másik oldal ugyanilyen fontos. A Plag.hu, az isgen.ai és a Smodin szinte senkit sem vádolt meg, de a gépi szövegek 47-74%-át emberinek hitte. A Preds 3 az 500 AI-szövegből mindössze 4-et hagyott ki.</p>
+          <ul class="waffles">
+<!-- build:waffles-fn -->
+<li class="is-ours"><div class="waffle-head"><span class="waffle-name">Preds 3</span><span class="waffle-count"><strong>4</strong> / 500</span></div><span class="waffle" role="img" aria-label="4 / 500" style="--full:0;--part:4"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Originality.ai</span><span class="waffle-count"><strong>17</strong> / 500</span></div><span class="waffle" role="img" aria-label="17 / 500" style="--full:0;--part:17"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">GPTZero</span><span class="waffle-count"><strong>98</strong> / 500</span></div><span class="waffle" role="img" aria-label="98 / 500" style="--full:1;--part:48"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">ZeroGPT</span><span class="waffle-count"><strong>179</strong> / 500</span></div><span class="waffle" role="img" aria-label="179 / 500" style="--full:3;--part:29"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Plag.hu</span><span class="waffle-count"><strong>233</strong> / 500</span></div><span class="waffle" role="img" aria-label="233 / 500" style="--full:4;--part:33"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">isgen.ai</span><span class="waffle-count"><strong>338</strong> / 500</span></div><span class="waffle" role="img" aria-label="338 / 500" style="--full:6;--part:38"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<li><div class="waffle-head"><span class="waffle-name">Smodin</span><span class="waffle-count"><strong>369</strong> / 500</span></div><span class="waffle" role="img" aria-label="369 / 500" style="--full:7;--part:19"><span class="waffle-rows"></span><span class="waffle-part"></span></span></li>
+<!-- /build:waffles-fn -->
+          </ul>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="hasznalat">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Felhasználási helyzetek</span>
+            <h2>Melyik mutató számít neked?</h2>
+          </div>
+          <p>Nem minden helyzetben ugyanaz a fontos. Egy szakdolgozatnál a téves vád a legnagyobb kockázat, egy szerkesztőségben inkább az, hogy mennyi gépi szöveg csúszik át.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card-kicker">Szakdolgozat és beadandó</span>
+            <h3>A téves vád aránya a döntő</h3>
+            <p>Egy ártatlan hallgató megvádolása sokkal nagyobb kár, mint egy kimaradt AI-szöveg. Olyan detektort érdemes választani, amelynek 1% alatti a téves vád aránya, és közben a gépi szövegek nagy részét is felismeri. A mérésben a Preds 3 és a GPTZero felelt meg ennek, de a Preds 3 a gépi szövegek 99,2%-át ismerte fel, a GPTZero 80,4%-át.</p>
+            <div class="card-links">
+              <a href="szakdolgozat-ai-ellenorzes/">Szakdolgozat AI-ellenőrzése lépésről lépésre</a>
+              <a href="#gyakorlatban">Téves vádak detektoronként</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-kicker">Hétköznapi ellenőrzés</span>
+            <h3>Gyorsan, mondatszintű jelöléssel</h3>
+            <p>Cikkeknél, e-maileknél és motivációs leveleknél a kényelem is számít: hasznos, ha a detektor a böngészőben is elérhető, és megmutatja, mely mondatok gyanúsak. A mérés győztese például <a href="https://preds.hu/blog/preds-chrome-bovitmeny-ai-detektalas-barmely-weboldalon">Chrome-bővítményként</a> is működik.</p>
+            <div class="card-links">
+              <a href="ai-detektor-valasztas/">Hogyan válassz AI-detektort?</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-kicker">Szerkesztőségek, HR, intézmények</span>
+            <h3>Nagy mennyiségnél az AUROC számít</h3>
+            <p>Ha sok szöveget kell átnézni, az a fontos, hogy a detektor pontszáma megbízhatóan rangsorolja a szövegeket. Erre az AUROC a legjobb mérőszám: a Preds 3 és a GPTZero 0,99 fölött teljesített, három eszköz viszont 0,77 alatt maradt.</p>
+            <div class="card-links">
+              <a href="#metrikak">AUROC detektoronként</a>
+              <a href="modszertan/">Mit mér pontosan az AUROC?</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="elemzes">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Elemzés</span>
+            <h2>Miért ilyen nagy a különbség a detektorok között?</h2>
+          </div>
+          <p>Ugyanazon a teszten 62,9% és 99,6% közötti pontosságot mértünk. A számokból három jellegzetes hibaminta rajzolódik ki.</p>
+        </div>
+
+        <div class="reasons">
+          <div>
+            <span class="reason-num">01</span>
+            <h3>Túl óvatos döntés</h3>
+            <p>A GPTZero AUROC-értéke 0,9923, vagyis a pontszámai jól elválasztják az emberi és a gépi szövegeket. Mégis csak 90,1%-os a pontossága, mert magyar szövegen túl óvatosan dönt, és a gépi szövegek ötödét átengedi. Hasonló a Plag.hu helyzete: 0,948-as AUROC mellett 76,5%-os pontosság.</p>
+          </div>
+          <div>
+            <span class="reason-num">02</span>
+            <h3>Túl agresszív döntés</h3>
+            <p>Az Originality.ai a gépi szövegek 96,6%-át elkapja, de ennek ára van: az emberi szövegek 32,6%-át is AI-nak jelöli. Ez a fordított hiba, és vizsgahelyzetben ez a veszélyesebb, mert ártatlan embereket érint.</p>
+          </div>
+          <div>
+            <span class="reason-num">03</span>
+            <h3>Kevés magyar tanítóadat</h3>
+            <p>A ZeroGPT, az isgen.ai és a Smodin AUROC-értéke 0,69 és 0,77 között van, vagyis a pontszámaik alig választják szét a két csoportot. Ezen a döntési küszöb állítása sem segít, és jellemzően arra utal, hogy a modell kevés magyar szövegen tanult. A kifejezetten magyar nyelvre készült Preds 3 AUROC-értéke 0,9996.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="modszertan">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Módszertan</span>
+          <h2>Átlátható, megismételhető mérés</h2>
+          <p class="muted">Az 1000 szöveg 9 témakörből származik, és minden témakörben ugyanannyi emberi és gépi szöveg van, így a téma nem árulja el a címkét. A szövegek hossza 80 és 995 szó között van, a medián 198 szó.</p>
+          <p class="muted">A gépi szövegek frissen készültek, és a Preds tanításában nem szerepeltek, így a saját modellünk sem indult előnnyel.</p>
+          <div class="btn-row" style="margin-top:28px">
+            <a class="btn btn-primary" href="modszertan/">Teljes módszertan</a>
+            <a class="btn btn-ghost" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz a Hugging Face-en</a>
+          </div>
+        </div>
+        <div>
+          <p class="mini-title">Az AI-szövegeket ezek a modellek írták</p>
+          <ul class="chips">
+            <li>GPT-5.6</li>
+            <li>Gemini 3.8 Flash</li>
+            <li>DeepSeek V4 Flash</li>
+            <li>Kimi K2.6</li>
+            <li>Llama 4 Scout</li>
+            <li>Qwen 3.7 Flash</li>
+            <li>GLM 5.3 Flash</li>
+            <li>Mistral Small</li>
+            <li>Claude Haiku 4.5</li>
+            <li>Grok 4.3</li>
+            <li>gpt-oss-120b</li>
+          </ul>
+          <p class="mini-title">Témakörök</p>
+          <ul class="chips">
+            <li>Kreatív írás</li>
+            <li>Esszé és tudományos</li>
+            <li>Általános web</li>
+            <li>Technika és IT</li>
+            <li>Hírek</li>
+            <li>Ismeretterjesztés és oktatás</li>
+            <li>Jogi és közigazgatási</li>
+            <li>Közösségi és kérdés-válasz</li>
+            <li>Tudomány és orvoslás</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gyik">
+      <div class="wrap">
+        <div class="section-head stack">
+          <span class="eyebrow">Gyakori kérdések</span>
+          <h2>Kérdések az AI-detektálásról</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Melyik a legjobb AI-detektor magyar nyelvre?</summary>
+            <div class="answer"><p>A HuDetect-1k mérésben a Preds 3 érte el a legjobb eredményt minden mutatóban: 99,6% pontosság, 0% téves vád és 0,9996 AUROC. A második helyen a GPTZero végzett 90,1%-os pontossággal. A mérés nyílt adatokon készült, ezért bárki ellenőrizheti.</p></div>
+          </details>
+          <details>
+            <summary>Megbízható az AI-detektor szakdolgozat ellenőrzésére?</summary>
+            <div class="answer"><p>Csak akkor, ha nagyon ritkán vádol meg tévesen embert. A mérésben két népszerű eszköz is nagyjából minden harmadik emberi szöveget AI-nak jelölt, ami szakdolgozatnál elfogadhatatlan. A Preds 3 egyetlen emberi szöveget sem jelölt tévesen.</p><p>Az eredmény ettől még jelzés, nem bizonyíték, ezért érdemes beszélgetéssel és a korábbi munkákkal együtt értékelni. Részletek a <a href="szakdolgozat-ai-ellenorzes/">szakdolgozat-ellenőrzési útmutatóban</a>.</p></div>
+          </details>
+          <details>
+            <summary>Miért a téves vádak aránya a legfontosabb mutató?</summary>
+            <div class="answer"><p>Egy kimaradt AI-szöveg bosszantó, de egy tévesen megvádolt ember komoly kárt szenvedhet: rossz jegyet, fegyelmi eljárást vagy elvesztett állásajánlatot. A jó detektornak ezért először az emberi szövegeket kell békén hagynia, és csak utána kell minél több AI-szöveget elkapnia.</p></div>
+          </details>
+          <details>
+            <summary>Felismeri a ChatGPT, a Claude és a Gemini által írt szövegeket?</summary>
+            <div class="answer"><p>Igen. A tesztben 11 különböző nyelvi modell írta az AI-szövegeket, köztük a GPT-5.6, a Gemini 3.8 Flash, a Claude Haiku 4.5, a DeepSeek V4 és a Llama 4. A Preds 3 az 500 gépi szövegből 496-ot ismert fel helyesen.</p></div>
+          </details>
+          <details>
+            <summary>Melyik AI-detektor használható ingyen?</summary>
+            <div class="answer"><p>A tesztelt eszközök többsége kínál ingyenes keretet, de magyar szövegen nagyon eltérően teljesítenek. A mérés győztese, a Preds 3, naponta 2 ingyenes kreditet ad, egy kredit legfeljebb 1000 szót fed le. A részletek a <a href="https://preds.hu/pricing">Preds árazási oldalán</a> láthatók.</p></div>
+          </details>
+          <details>
+            <summary>Hogyan ellenőrizhetem az eredményeket?</summary>
+            <div class="answer"><p>Töltsd le a HuDetect-1k adathalmazt a Hugging Face-ről, futtasd le rajta a detektort, és számold ki a mutatókat. A <a href="modszertan/">módszertan oldalon</a> egy rövid Python-kód is segít. A részletes eredmények CSV és JSON formátumban is letölthetők.</p></div>
+          </details>
+          <details>
+            <summary>Ki készítette a mérést?</summary>
+            <div class="answer"><p>Az adathalmazt és a mérést a Preds fejlesztője készítette. Mivel a Preds is szerepel a versenyzők között, minden adat nyilvános: az 1000 szöveg, a címkék és a detektoronkénti eredmények is, így bárki ellenőrizheti és megismételheti a mérést.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="cta-band" aria-label="Ellenőrizd te is">
+        <div>
+          <h2>Ellenőrizd az eredményeket te is</h2>
+          <p>Az 1000 szöveg, a címkék és a detektoronkénti eredmények nyilvánosak. Töltsd le az adathalmazt, futtasd le rajta bármelyik detektort, és hasonlítsd össze a számokat.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-accent" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz letöltése</a>
+          <a class="btn btn-ghost" href="modszertan/">Módszertan</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="./"><img src="assets/logo.svg" alt="" width="30" height="30"><span>Magyar AI-detektor benchmark</span></a>
+          <p style="margin-top:16px">A HuDetect-1k nyílt magyar teszthalmaz AI-szövegdetektorok összehasonlításához. Az adathalmazt és a mérést a Preds fejlesztője készítette, ezért minden szöveg, címke és eredmény nyilvános és ellenőrizhető.</p>
+        </div>
+        <div>
+          <h2>Az oldalon</h2>
+          <ul>
+            <li><a href="#ranglista">Ranglista</a></li>
+            <li><a href="modszertan/">Módszertan</a></li>
+            <li><a href="szakdolgozat-ai-ellenorzes/">Szakdolgozat AI-ellenőrzése</a></li>
+            <li><a href="ai-detektor-valasztas/">AI-detektor választás</a></li>
+            <li><a href="en/" hreflang="en">English version</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Adatok</h2>
+          <ul>
+            <li><a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz (Hugging Face)</a></li>
+            <li><a href="data/results.csv">Eredmények (CSV)</a></li>
+            <li><a href="data/results.json">Eredmények (JSON)</a></li>
+            <li><a href="https://github.com/kissmihaly1/magyar-ai-detektor-teszt">Forráskód (GitHub)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>A szövegek és az eredmények CC BY 4.0 licenc alatt, forrásmegjelöléssel szabadon idézhetők.</span>
+        <span>Utoljára frissítve: 2026. október 1.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

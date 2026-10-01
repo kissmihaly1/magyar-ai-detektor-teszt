@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szakdolgozat AI-ellenőrzése 2026: útmutató hallgatóknak és oktatóknak</title>
+  <meta name="description" content="Hogyan ellenőrizd a szakdolgozatot AI-detektorral, és miért számít, melyiket használod? Mérési adatok, lépésről lépésre útmutató, tippek hallgatóknak és témavezetőknek.">
+  <link rel="canonical" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/szakdolgozat-ai-ellenorzes/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1510" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Magyar AI-detektor benchmark">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:url" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/szakdolgozat-ai-ellenorzes/">
+  <meta property="og:title" content="Szakdolgozat AI-ellenőrzése: mire figyelj leadás előtt?">
+  <meta property="og:description" content="Két népszerű AI-detektor minden harmadik ember által írt szöveget gépinek jelölt. Így ellenőrizd a szakdolgozatod biztonságosan.">
+  <meta property="og:image" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-szakdolgozat.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Szakdolgozat AI-ellenőrzése: mire figyelj leadás előtt?",
+        "description": "Útmutató hallgatóknak és oktatóknak a szakdolgozatok AI-detektoros ellenőrzéséhez, a HuDetect-1k mérés adataival.",
+        "inLanguage": "hu-HU",
+        "datePublished": "2026-10-01",
+        "dateModified": "2026-10-01",
+        "mainEntityOfPage": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/szakdolgozat-ai-ellenorzes/",
+        "image": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-szakdolgozat.png"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Elég egy AI-detektor eredménye ahhoz, hogy valakit megvádoljanak?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nem. Egy AI-detektor eredménye önmagában sosem bizonyíték. Csak más információkkal együtt érdemes figyelembe venni, például a vázlatokkal, a korábbi munkákkal és egy szóbeli beszélgetéssel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ki lehet játszani az AI-detektort átfogalmazással?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Apró átírással általában nem. A modern detektorok a gondolatmenet felépítéséből és a mondatok szerkezetéből is dolgoznak, nem csak egy-egy szóból. Aki annyi időt tölt egy generált szöveg átírásával, hogy az tényleg a sajátja legyen, az nagyjából meg is írhatta volna."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Milyen fájlokat érdemes feltölteni?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Érdemes a teljes dokumentumot feltölteni, nem részleteket bemásolni. A mérés győztese (a Preds) TXT, PDF, DOCX és Markdown fájlt is kezel, sőt kézzel írt szöveg fotóját is, ez utóbbi jelenleg korai fejlesztési fázisban van."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mekkora szöveget lehet ellenőrizni?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rövid szövegből minden detektor bizonytalanabb. A Preds például legalább 60 szót kér, és egy teljes szakdolgozat is belefér egyetlen ellenőrzésbe."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Magyar AI-detektor benchmark",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Szakdolgozat AI-ellenőrzése",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/szakdolgozat-ai-ellenorzes/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="../">
+        <img src="../assets/logo.svg" alt="" width="30" height="30">
+        <span>Magyar AI-detektor benchmark<small>HuDetect-1k, 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="../#ranglista">Ranglista</a>
+        <a href="../modszertan/">Módszertan</a>
+        <a href="./" aria-current="page">Szakdolgozat</a>
+        <a href="../ai-detektor-valasztas/">Választási útmutató</a>
+        <a href="../en/" hreflang="en" lang="en">English</a>
+      </nav>
+      <a class="btn btn-primary btn-small header-cta" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="article-hero">
+      <div class="wrap">
+        <span class="eyebrow">Útmutató hallgatóknak és oktatóknak</span>
+        <h1>Szakdolgozat AI-ellenőrzése: mire figyelj leadás előtt?</h1>
+        <p class="lead">Az AI-detektorok egyre gyakrabban kerülnek elő a szakdolgozatok értékelésénél. Ebből az útmutatóból megtudod, miért számít, melyik detektort használod, hogyan ellenőrizd a saját dolgozatodat, és mit tegyél, ha gyanúsnak jelöl a rendszer.</p>
+        <div class="article-meta">
+          <span>Frissítve: <strong>2026. október 1.</strong></span>
+          <span>Olvasási idő: <strong>6 perc</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap article-layout">
+      <article class="prose">
+        <div class="callout">
+          <span class="callout-title">Röviden</span>
+          <ul>
+            <li>Szakdolgozatnál az a legfontosabb, hogy a detektor ne vádoljon meg tévesen. Ezt a téves vádak aránya (FPR) mutatja.</li>
+            <li>A HuDetect-1k mérésben a Preds 3 az 500 emberi szövegből egyet sem jelölt AI-nak, két ismert eszköz viszont nagyjából minden harmadikat.</li>
+            <li>A detektor eredménye jelzés, nem bizonyíték. Mindig a mondatszintű részletekkel és egy beszélgetéssel együtt értékeld.</li>
+          </ul>
+        </div>
+
+        <h2 id="miert-szamit">Miért számít, melyik detektort használod?</h2>
+        <p>Egy szakdolgozatnál nagy a tét: egy téves gyanú hónapok munkáját kérdőjelezheti meg. Ezért nem az a fő kérdés, hogy egy detektor hány AI-szöveget kap el, hanem az, hogy hány ember által írt szöveget jelöl tévesen gépinek.</p>
+        <p>A <a href="../">HuDetect-1k nyílt mérés</a> 1000 magyar szöveget tartalmaz, köztük 140 esszét és tudományos jellegű szöveget. Az 500 ember által írt szövegen ezek voltak az eredmények:</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Detektor</th><th scope="col" class="num">Téves vád (FPR)</th><th scope="col" class="num">Tévesen megvádolt szöveg</th></tr></thead>
+            <tbody>
+<!-- build:fpr-table-hu -->
+<tr class="is-ours"><th scope="row">Preds 3</th><td class="num">0,0%</td><td class="num">0 / 500</td></tr>
+<tr><th scope="row">GPTZero</th><td class="num">0,2%</td><td class="num">1 / 500</td></tr>
+<tr><th scope="row">Plag.hu</th><td class="num">0,4%</td><td class="num">2 / 500</td></tr>
+<tr><th scope="row">Smodin</th><td class="num">0,4%</td><td class="num">2 / 500</td></tr>
+<tr><th scope="row">isgen.ai</th><td class="num">1,4%</td><td class="num">7 / 500</td></tr>
+<tr><th scope="row">Originality.ai</th><td class="num">32,6%</td><td class="num">163 / 500</td></tr>
+<tr><th scope="row">ZeroGPT</th><td class="num">34,8%</td><td class="num">174 / 500</td></tr>
+<!-- /build:fpr-table-hu -->
+            </tbody>
+          </table>
+        </div>
+        <p>Vagyis ha egy tanszék a ZeroGPT-vel vagy az Originality.ai-jal ellenőrizne, nagyjából minden harmadik saját kezűleg írt dolgozat gyanúba kerülhetne. A Preds 3 a mérésben egyetlen emberi szöveget sem jelölt AI-nak, és közben a gépi szövegek 99,2%-át felismerte.</p>
+        <p>Az alacsony téves vád önmagában nem elég. A Smodin és a Plag.hu szintén ritkán vádolt meg embert, de a gépi szövegek 74, illetve 47 százalékát átengedte. A jó detektor mindkét irányban keveset hibázik.</p>
+
+        <h2 id="lepesek">Ellenőrzés lépésről lépésre</h2>
+        <ol class="steps">
+          <li><strong>Válassz megbízható detektort</strong>Olyat, amelynek magyar szövegen ismert és alacsony a téves vádak aránya. A fenti mérés alapján ez jelenleg a <a href="https://preds.hu/">Preds</a>, amely egyetlen emberi szöveget sem jelölt AI-nak.</li>
+          <li><strong>Töltsd fel a teljes dokumentumot</strong>Ne részleteket másolj be, hanem a teljes PDF-et vagy DOCX-et töltsd fel, mert hosszabb szövegből megbízhatóbb az eredmény.</li>
+          <li><strong>Nézd át a mondatszintű kiemeléseket</strong>Egy jó detektor nem csak egy összesített számot ad, hanem megmutatja, mely mondatok gyanúsak, és mennyire biztos bennük.</li>
+          <li><strong>Mentsd el a riportot</strong>Ha a detektor ad letölthető riportot, mentsd el. Szükség esetén ezzel tudod megmutatni a témavezetődnek, mit talált a rendszer.</li>
+          <li><strong>Értelmezd józanul az eredményt</strong>Egy-egy kiemelt mondat még nem jelenti, hogy a dolgozatot AI írta. Nézd meg, hogy a jelölések összefüggő részeken vannak-e, vagy csak elszórtan.</li>
+        </ol>
+
+        <h2 id="ertelmezes">Hogyan értelmezd az eredményt?</h2>
+        <p>Az AI-detektor valószínűséget becsül, nem bizonyít szerzőséget. A komolyabb detektorok maguk is így fogalmaznak: az eredmény döntéstámogató jelzés, nem végső ítélet.</p>
+        <ul>
+          <li><strong>Alacsony AI-valószínűség:</strong> a szöveg mintázatai az emberi írásra hasonlítanak.</li>
+          <li><strong>Magas AI-valószínűség hosszú, összefüggő részeken:</strong> érdemes megnézni, hogyan készültek ezek a részek.</li>
+          <li><strong>Néhány elszórt gyanús mondat:</strong> gyakran sablonos, tankönyvszerű megfogalmazás okozza, és önmagában nem ok az aggodalomra.</li>
+        </ul>
+
+        <h2 id="hallgatoknak">Tippek hallgatóknak</h2>
+        <ul>
+          <li>Mentsd el a vázlataidat és a korábbi verziókat. A Word és a Google Docs verzióelőzménye jól mutatja, hogyan készült a szöveg.</li>
+          <li>Ha AI-eszközt használtál, például nyelvi javításra vagy ötleteléshez, nézd meg, mit enged az egyetemed szabályzata, és jelezd a dolgozatban.</li>
+          <li>Ellenőrizd a dolgozatot leadás előtt, hogy ne a bírálatnál érjen meglepetés.</li>
+          <li>Ha a detektor tévesen jelöl, a mondatszintű riport megmutatja, pontosan mely részekről van szó, és ezeket a vázlataiddal alá tudod támasztani.</li>
+        </ul>
+        <p>Hasznos összefoglaló hallgatóknak a <a href="https://preds.hu/audiences/students">Preds oldalán</a> is található.</p>
+
+        <h2 id="oktatoknak">Tippek témavezetőknek és oktatóknak</h2>
+        <ul>
+          <li>Olyan detektort használj, amelynek magyar szövegen ismert és alacsony a téves vádak aránya.</li>
+          <li>Az eredményt ne önmagában használd. Vesd össze a hallgató korábbi munkáival, és beszélgess vele a dolgozatról.</li>
+          <li>Ha kétség merül fel, kérd el a vázlatokat vagy a verzióelőzményt.</li>
+          <li>Intézményi használatnál érdemes olyan eszközt választani, amely csapat- és API-hozzáférést is kínál.</li>
+        </ul>
+        <p>A mérés győztese például külön megoldást kínál <a href="https://preds.hu/audiences/teachers">oktatóknak</a> és <a href="https://preds.hu/audiences/universities">egyetemeknek</a>.</p>
+
+        <h2 id="plagium">AI-detektor vagy plágiumkereső?</h2>
+        <p>A kettő mást vizsgál. A plágiumkereső azt nézi, hogy a szöveg egyezik-e már meglévő forrásokkal. Az AI-detektor azt becsüli, hogy a szöveget ember vagy nyelvi modell írta.</p>
+        <p>Egy AI által írt dolgozat lehet teljesen egyedi, ezért a plágiumkereső nem találja meg. Fordítva is igaz: egy másolt szöveg plágium, de attól még ember írta. Szakdolgozatnál ezért érdemes mindkettőt használni.</p>
+
+        <h2 id="ar">Mennyibe kerül az ellenőrzés?</h2>
+        <p>Több eszköz ad ingyenes keretet, de egy teljes szakdolgozathoz általában fizetős csomag kell. A mérés győztese, a Preds, naponta 2 ingyenes kreditet ad, kreditenként legfeljebb 1000 szóig, ami nagyjából egy fejezetre elég. Egy 15 000 szavas dolgozat így körülbelül 15 kredit, ezt a havi 4000 forintos csomag bőven fedezi. Az aktuális árak a <a href="https://preds.hu/pricing">Preds árazási oldalán</a> láthatók.</p>
+
+        <h2 id="gyik">Gyakori kérdések</h2>
+        <div class="faq">
+          <details>
+            <summary>Elég egy AI-detektor eredménye ahhoz, hogy valakit megvádoljanak?</summary>
+            <div class="answer"><p>Nem. Egy AI-detektor eredménye önmagában sosem bizonyíték. Csak más információkkal együtt érdemes figyelembe venni, például a vázlatokkal, a korábbi munkákkal és egy szóbeli beszélgetéssel.</p></div>
+          </details>
+          <details>
+            <summary>Ki lehet játszani az AI-detektort átfogalmazással?</summary>
+            <div class="answer"><p>Apró átírással általában nem. A modern detektorok a gondolatmenet felépítéséből és a mondatok szerkezetéből is dolgoznak, nem csak egy-egy szóból. Aki annyi időt tölt egy generált szöveg átírásával, hogy az tényleg a sajátja legyen, az nagyjából meg is írhatta volna. Erről egy kísérlet is olvasható a <a href="https://preds.hu/blog/ki-lehet-kerulni-az-ai-detektorokat-a-szoveg-megvaltoztatasaval">Preds blogján</a>.</p></div>
+          </details>
+          <details>
+            <summary>Milyen fájlokat érdemes feltölteni?</summary>
+            <div class="answer"><p>Érdemes a teljes dokumentumot feltölteni, nem részleteket bemásolni. A mérés győztese (a Preds) TXT, PDF, DOCX és Markdown fájlt is kezel, sőt kézzel írt szöveg fotóját is, ez utóbbi jelenleg korai fejlesztési fázisban van. Erről <a href="https://preds.hu/blog/keziras-felismeres-fotobol-ai-detektalas">itt olvashatsz bővebben</a>.</p></div>
+          </details>
+          <details>
+            <summary>Mekkora szöveget lehet ellenőrizni?</summary>
+            <div class="answer"><p>Rövid szövegből minden detektor bizonytalanabb. A Preds például legalább 60 szót kér, és egy teljes szakdolgozat is belefér egyetlen ellenőrzésbe.</p></div>
+          </details>
+        </div>
+
+        <h2 id="tovabb">Tovább olvasnál?</h2>
+        <div class="related">
+          <a href="../#ranglista"><strong>A teljes ranglista</strong><span>Hét AI-detektor eredménye 1000 magyar szövegen</span></a>
+          <a href="../modszertan/"><strong>Módszertan</strong><span>Így készült a mérés, és így ismételheted meg</span></a>
+          <a href="../ai-detektor-valasztas/"><strong>AI-detektor választás</strong><span>Mire figyelj mindennapi használatnál?</span></a>
+        </div>
+      </article>
+
+      <aside class="article-aside">
+        <nav class="toc" aria-label="Tartalom">
+          <p>Tartalom</p>
+          <ol>
+            <li><a href="#miert-szamit">Miért számít a detektor?</a></li>
+            <li><a href="#lepesek">Ellenőrzés lépésről lépésre</a></li>
+            <li><a href="#ertelmezes">Az eredmény értelmezése</a></li>
+            <li><a href="#hallgatoknak">Tippek hallgatóknak</a></li>
+            <li><a href="#oktatoknak">Tippek oktatóknak</a></li>
+            <li><a href="#plagium">AI-detektor vagy plágiumkereső?</a></li>
+            <li><a href="#ar">Mennyibe kerül?</a></li>
+            <li><a href="#gyik">Gyakori kérdések</a></li>
+          </ol>
+        </nav>
+        <div class="aside-card">
+          <strong>Téves vádak 500 emberi szövegen</strong>
+          <p>Preds 3: 0<br>GPTZero: 1<br>Plag.hu és Smodin: 2<br>isgen.ai: 7<br>Originality.ai: 163<br>ZeroGPT: 174</p>
+          <a class="btn btn-accent btn-small" href="../#ranglista">Teljes ranglista</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="../"><img src="../assets/logo.svg" alt="" width="30" height="30"><span>Magyar AI-detektor benchmark</span></a>
+          <p style="margin-top:16px">A HuDetect-1k nyílt magyar teszthalmaz AI-szövegdetektorok összehasonlításához. Az adathalmazt és a mérést a Preds fejlesztője készítette, ezért minden szöveg, címke és eredmény nyilvános és ellenőrizhető.</p>
+        </div>
+        <div>
+          <h2>Az oldalon</h2>
+          <ul>
+            <li><a href="../#ranglista">Ranglista</a></li>
+            <li><a href="../modszertan/">Módszertan</a></li>
+            <li><a href="./">Szakdolgozat AI-ellenőrzése</a></li>
+            <li><a href="../ai-detektor-valasztas/">AI-detektor választás</a></li>
+            <li><a href="../en/" hreflang="en">English version</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Adatok</h2>
+          <ul>
+            <li><a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz (Hugging Face)</a></li>
+            <li><a href="../data/results.csv">Eredmények (CSV)</a></li>
+            <li><a href="../data/results.json">Eredmények (JSON)</a></li>
+            <li><a href="https://github.com/kissmihaly1/magyar-ai-detektor-teszt">Forráskód (GitHub)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>A szövegek és az eredmények CC BY 4.0 licenc alatt, forrásmegjelöléssel szabadon idézhetők.</span>
+        <span>Utoljára frissítve: 2026. október 1.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>

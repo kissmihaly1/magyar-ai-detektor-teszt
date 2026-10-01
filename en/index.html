@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hungarian AI Detector Benchmark 2026: Which Tool Is Most Accurate?</title>
+  <meta name="description" content="We tested 7 AI detectors on 1,000 Hungarian texts. Preds 3 reached 99.6% accuracy with zero false positives. GPTZero, Originality.ai, ZeroGPT and more compared on open data.">
+  <link rel="canonical" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/en/">
+  <link rel="alternate" hreflang="hu" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <link rel="alternate" hreflang="en" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/en/">
+  <link rel="alternate" hreflang="x-default" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1510" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hungarian AI Detector Benchmark">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="hu_HU">
+  <meta property="og:url" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/en/">
+  <meta property="og:title" content="Which AI detector works best for Hungarian? Open benchmark on 1,000 texts">
+  <meta property="og:description" content="Preds 3 won with 99.6% accuracy and did not flag a single human-written text as AI. Six well-known detectors compared on open data.">
+  <meta property="og:image" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hungarian AI detector leaderboard: Preds 3 at 99.6% accuracy">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Which AI detector works best for Hungarian? Open benchmark on 1,000 texts",
+        "description": "Seven AI detectors compared on the open HuDetect-1k Hungarian dataset. Preds 3 reached 99.6% accuracy, a 0% false positive rate and 0.9996 AUROC.",
+        "inLanguage": "en",
+        "datePublished": "2026-10-01",
+        "dateModified": "2026-10-01",
+        "mainEntityOfPage": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/en/",
+        "image": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-en.png",
+        "isBasedOn": "https://huggingface.co/datasets/mihalykiss/GenAIDetectHU"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the best AI detector for Hungarian?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "On the open HuDetect-1k benchmark, Preds 3 led every metric: 99.6% accuracy, a 0% false positive rate and 0.9996 AUROC. GPTZero came second with 90.1% accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do English-first AI detectors work on Hungarian text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Results vary widely. In the benchmark, ZeroGPT and Originality.ai flagged roughly one in three human-written Hungarian texts as AI, while Smodin and isgen.ai missed most AI-written texts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who ran the benchmark?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The dataset and the benchmark were created by the developer of Preds. Because Preds is one of the detectors compared, every text, label and per-detector result is public, so anyone can check and repeat the test."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I reproduce the results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The 1,000 texts and labels are public on Hugging Face under CC BY 4.0, and the per-detector confusion counts are available as CSV and JSON."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="./">
+        <img src="../assets/logo.svg" alt="" width="30" height="30">
+        <span>Hungarian AI Detector Benchmark<small>HuDetect-1k, 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#findings">Findings</a>
+        <a href="#method">Method</a>
+        <a href="../modszertan/" hreflang="hu" lang="hu">Módszertan</a>
+        <a href="../" hreflang="hu" lang="hu">Magyar</a>
+      </nav>
+      <a class="btn btn-primary btn-small header-cta" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Dataset</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Open benchmark on 1,000 Hungarian texts</span>
+          <h1>Which <em>AI detector</em> works best for Hungarian?</h1>
+          <p class="lead">We tested seven well-known AI detectors on the same 1,000 Hungarian texts. <a href="https://preds.hu/en">Preds 3</a>, a detector built specifically for Hungarian, came first with 99.6% accuracy and did not flag a single one of the 500 human-written texts as AI.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#leaderboard">See the leaderboard</a>
+            <a class="btn btn-ghost" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Download the dataset</a>
+          </div>
+          <p class="hero-note">The dataset is open (CC BY 4.0) and free to download from <a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Hugging Face</a>, so anyone can repeat the test.</p>
+        </div>
+
+        <aside class="score-card" aria-label="Winning result">
+          <div class="score-top">
+            <span>Preds 3</span>
+            <span class="pill">Rank 1</span>
+          </div>
+          <p class="score-big">99.6%</p>
+          <p class="score-label">accuracy on 1,000 Hungarian texts</p>
+          <div class="score-stats">
+            <div><strong>0 / 500</strong><span>human texts wrongly flagged as AI</span></div>
+            <div><strong>0.9996</strong><span>AUROC, close to a perfect 1.0</span></div>
+          </div>
+          <div class="compare" aria-label="Accuracy compared">
+            <div class="compare-row is-ours"><span>Preds 3</span><span class="compare-track"><span style="--w:99.6%"></span></span><b>99.6%</b></div>
+            <div class="compare-row"><span>GPTZero, 2nd</span><span class="compare-track"><span style="--w:90.1%"></span></span><b>90.1%</b></div>
+            <div class="compare-row"><span>Others, average</span><span class="compare-track"><span style="--w:73.6%"></span></span><b>73.6%</b></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="facts">
+        <div><strong>1,000</strong><span>Hungarian texts</span></div>
+        <div><strong>500 + 500</strong><span>human and AI-written</span></div>
+        <div><strong>11</strong><span>language models wrote the AI texts</span></div>
+        <div><strong>9</strong><span>domains from news to legal</span></div>
+        <div><strong>7</strong><span>detectors on the same test</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="leaderboard">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Leaderboard</span>
+            <h2>All results in one table</h2>
+          </div>
+          <p>Accuracy is the share of texts classified correctly. FPR is the share of human texts flagged as AI, and FNR is the share of AI texts that passed as human. For those two, lower is better.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="board" data-sortable>
+            <caption class="sr-only">AI detector results on the HuDetect-1k Hungarian dataset</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-dir="ascending"><button type="button">#</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">Detector</button></th>
+                <th scope="col" aria-sort="descending"><button type="button">Accuracy</button></th>
+                <th scope="col"><button type="button">F1</button></th>
+                <th scope="col"><button type="button">AUROC</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">False positives (FPR)</button></th>
+                <th scope="col" data-dir="ascending"><button type="button">Missed AI (FNR)</button></th>
+              </tr>
+            </thead>
+            <tbody>
+<!-- build:leaderboard-en -->
+<tr class="is-ours"><td class="rank" data-value="1">1</td><th scope="row" data-value="Preds 3">Preds 3 <span class="tag">Top result</span></th><td data-value="99.6"><span class="cell-bar" style="--w:99.6%"></span>99.6%</td><td data-value="99.6">99.60%</td><td data-value="0.9996">0.9996</td><td data-value="0.0">0.0%</td><td data-value="0.8">0.8%</td></tr>
+<tr><td class="rank" data-value="2">2</td><th scope="row" data-value="GPTZero">GPTZero</th><td data-value="90.1"><span class="cell-bar" style="--w:90.1%"></span>90.1%</td><td data-value="89.04">89.04%</td><td data-value="0.9923">0.9923</td><td data-value="0.2">0.2%</td><td data-value="19.6">19.6%</td></tr>
+<tr><td class="rank" data-value="3">3</td><th scope="row" data-value="Originality.ai">Originality.ai</th><td data-value="82.0"><span class="cell-bar" style="--w:82.0%"></span>82.0%</td><td data-value="84.29">84.29%</td><td data-value="0.9574">0.9574</td><td data-value="32.6">32.6%</td><td data-value="3.4">3.4%</td></tr>
+<tr><td class="rank" data-value="4">4</td><th scope="row" data-value="Plag.hu">Plag.hu</th><td data-value="76.5"><span class="cell-bar" style="--w:76.5%"></span>76.5%</td><td data-value="69.44">69.44%</td><td data-value="0.948">0.9480</td><td data-value="0.4">0.4%</td><td data-value="46.6">46.6%</td></tr>
+<tr><td class="rank" data-value="5">5</td><th scope="row" data-value="isgen.ai">isgen.ai</th><td data-value="65.5"><span class="cell-bar" style="--w:65.5%"></span>65.5%</td><td data-value="48.43">48.43%</td><td data-value="0.7317">0.7317</td><td data-value="1.4">1.4%</td><td data-value="67.6">67.6%</td></tr>
+<tr><td class="rank" data-value="6">6</td><th scope="row" data-value="ZeroGPT">ZeroGPT</th><td data-value="64.7"><span class="cell-bar" style="--w:64.7%"></span>64.7%</td><td data-value="64.52">64.52%</td><td data-value="0.6911">0.6911</td><td data-value="34.8">34.8%</td><td data-value="35.8">35.8%</td></tr>
+<tr><td class="rank" data-value="7">7</td><th scope="row" data-value="Smodin">Smodin</th><td data-value="62.9"><span class="cell-bar" style="--w:62.9%"></span>62.9%</td><td data-value="41.39">41.39%</td><td data-value="0.7655">0.7655</td><td data-value="0.4">0.4%</td><td data-value="73.8">73.8%</td></tr>
+<!-- /build:leaderboard-en -->
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Click a column name to sort. Full results are available as <a href="../data/results.csv">CSV</a> and <a href="../data/results.json">JSON</a>. Measured in September 2026.</p>
+        <p class="disclosure"><strong>Disclosure:</strong> the dataset and the benchmark were created by the developer of Preds. That is why every text, label and result is public, so anyone can check them.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="findings">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Key findings</span>
+            <h2>What the numbers mean</h2>
+          </div>
+          <p>Percentages hide real people. These are the raw counts behind them, out of 500 human-written and 500 AI-written texts.</p>
+        </div>
+
+        <div class="reasons">
+          <div>
+            <span class="reason-num">01</span>
+            <h3>Zero false accusations</h3>
+            <p>Preds 3 flagged none of the 500 human-written texts as AI. ZeroGPT flagged 174 and Originality.ai flagged 163, roughly one in three.</p>
+          </div>
+          <div>
+            <span class="reason-num">02</span>
+            <h3>Almost nothing slips through</h3>
+            <p>Preds 3 missed only 4 of the 500 AI texts. Smodin missed 369, isgen.ai 338 and Plag.hu 233, even though they rarely flagged humans.</p>
+          </div>
+          <div>
+            <span class="reason-num">03</span>
+            <h3>Hungarian training data matters</h3>
+            <p>ZeroGPT, isgen.ai and Smodin score an AUROC between 0.69 and 0.77, so their scores barely separate human from AI text. No threshold can fix that, and it usually points to little Hungarian training data. Preds 3, built for Hungarian, scores 0.9996.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Method</span>
+          <h2>Transparent and repeatable</h2>
+          <p class="muted">The 1,000 texts come from 9 domains, with the same number of human and AI texts in each, so the topic cannot give the label away. Lengths are matched within each domain, from 80 to 995 words, with a median of 198.</p>
+          <p class="muted">The AI texts were generated fresh for this test and were never used to train Preds, so our own model had no head start.</p>
+          <div class="btn-row" style="margin-top:28px">
+            <a class="btn btn-primary" href="../modszertan/" hreflang="hu">Full method (Hungarian)</a>
+            <a class="btn btn-ghost" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Dataset on Hugging Face</a>
+          </div>
+        </div>
+        <div>
+          <p class="mini-title">AI texts were written by</p>
+          <ul class="chips">
+            <li>GPT-5.6</li>
+            <li>Gemini 3.8 Flash</li>
+            <li>DeepSeek V4 Flash</li>
+            <li>Kimi K2.6</li>
+            <li>Llama 4 Scout</li>
+            <li>Qwen 3.7 Flash</li>
+            <li>GLM 5.3 Flash</li>
+            <li>Mistral Small</li>
+            <li>Claude Haiku 4.5</li>
+            <li>Grok 4.3</li>
+            <li>gpt-oss-120b</li>
+          </ul>
+          <p class="mini-title">Domains</p>
+          <ul class="chips">
+            <li>Creative writing</li>
+            <li>Essays and academic</li>
+            <li>General web</li>
+            <li>Technical and IT</li>
+            <li>News</li>
+            <li>Reference and education</li>
+            <li>Legal and administrative</li>
+            <li>Social and Q&amp;A</li>
+            <li>Science and medicine</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head stack">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What is the best AI detector for Hungarian?</summary>
+            <div class="answer"><p>On the open HuDetect-1k benchmark, Preds 3 led every metric: 99.6% accuracy, a 0% false positive rate and 0.9996 AUROC. GPTZero came second with 90.1% accuracy.</p></div>
+          </details>
+          <details>
+            <summary>Do English-first AI detectors work on Hungarian text?</summary>
+            <div class="answer"><p>Results vary widely. In the benchmark, ZeroGPT and Originality.ai flagged roughly one in three human-written Hungarian texts as AI, while Smodin and isgen.ai missed most AI-written texts.</p></div>
+          </details>
+          <details>
+            <summary>Who ran the benchmark?</summary>
+            <div class="answer"><p>The dataset and the benchmark were created by the developer of Preds. Because Preds is one of the detectors compared, every text, label and per-detector result is public, so anyone can check and repeat the test.</p></div>
+          </details>
+          <details>
+            <summary>Can I reproduce the results?</summary>
+            <div class="answer"><p>Yes. The 1,000 texts and labels are public on Hugging Face under CC BY 4.0, and the per-detector confusion counts are available as <a href="../data/results.csv">CSV</a> and <a href="../data/results.json">JSON</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="cta-band" aria-label="Check the results">
+        <div>
+          <h2>Check the results yourself</h2>
+          <p>The 1,000 texts, the labels and the per-detector results are public. Download the dataset, run any detector on it and compare the numbers.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-accent" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Download the dataset</a>
+          <a class="btn btn-ghost" href="../modszertan/" hreflang="hu">Method (Hungarian)</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="./"><img src="../assets/logo.svg" alt="" width="30" height="30"><span>Hungarian AI Detector Benchmark</span></a>
+          <p style="margin-top:16px">HuDetect-1k is an open Hungarian test set for comparing AI-text detectors. The dataset and benchmark were created by the developer of Preds, so every text, label and result is public and verifiable.</p>
+        </div>
+        <div>
+          <h2>On this site</h2>
+          <ul>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="../modszertan/" hreflang="hu">Methodology (HU)</a></li>
+            <li><a href="../szakdolgozat-ai-ellenorzes/" hreflang="hu">Thesis checking guide (HU)</a></li>
+            <li><a href="../" hreflang="hu">Magyar verzió</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Data</h2>
+          <ul>
+            <li><a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Dataset (Hugging Face)</a></li>
+            <li><a href="../data/results.csv">Results (CSV)</a></li>
+            <li><a href="../data/results.json">Results (JSON)</a></li>
+            <li><a href="https://github.com/kissmihaly1/magyar-ai-detektor-teszt">Source (GitHub)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Text and results may be quoted freely under CC BY 4.0 with attribution.</span>
+        <span>Last updated: 1 October 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>

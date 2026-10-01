@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módszertan: így mértük a magyar AI-detektorokat | HuDetect-1k</title>
+  <meta name="description" content="A HuDetect-1k magyar AI-detektor benchmark módszertana: 1000 szöveg, 9 témakör, 11 nyelvi modell, a mutatók képletei, részletes eredmények és Python-kód a mérés megismétléséhez.">
+  <link rel="canonical" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1510" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Magyar AI-detektor benchmark">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:url" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/">
+  <meta property="og:title" content="Így mértük a magyar AI-detektorokat: a HuDetect-1k módszertana">
+  <meta property="og:description" content="1000 magyar szöveg, 9 témakör, 11 nyelvi modell. A mutatók képletei, a részletes eredmények és kód a mérés megismétléséhez.">
+  <meta property="og:image" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-hu.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Dataset",
+        "@id": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/#dataset",
+        "name": "HuDetect-1k: magyar AI-szövegdetektálási benchmark",
+        "alternateName": [
+          "HuDetect-1k",
+          "GenAIDetectHU"
+        ],
+        "description": "1000 magyar nyelvű dokumentum AI-szövegdetektorok értékeléséhez: 500 ember által írt és 500 nagy nyelvi modell által generált szöveg, 9 témakörben kiegyensúlyozva, hosszban párosítva. Az AI-szövegeket 11 különböző nyelvi modell írta. A kapcsolódó eredmények hét AI-detektor összehasonlítását tartalmazzák.",
+        "url": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/",
+        "sameAs": "https://huggingface.co/datasets/mihalykiss/GenAIDetectHU",
+        "version": "1.3",
+        "datePublished": "2026-09-21",
+        "inLanguage": "hu",
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "keywords": [
+          "AI-detektor",
+          "magyar nyelv",
+          "AI-szöveg felismerés",
+          "benchmark",
+          "nagy nyelvi modellek",
+          "LLM detection",
+          "Hungarian"
+        ],
+        "variableMeasured": [
+          "text",
+          "label",
+          "model"
+        ],
+        "creator": {
+          "@type": "Person",
+          "name": "Kiss Mihály",
+          "url": "https://huggingface.co/mihalykiss"
+        },
+        "distribution": [
+          {
+            "@type": "DataDownload",
+            "name": "HuDetect-1k szövegek",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://huggingface.co/datasets/mihalykiss/GenAIDetectHU/resolve/main/hudetect1k_v1.3.csv"
+          },
+          {
+            "@type": "DataDownload",
+            "name": "Detektor eredmények",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/data/results.csv"
+          }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "Így mértük a magyar AI-detektorokat: a HuDetect-1k módszertana",
+        "inLanguage": "hu-HU",
+        "datePublished": "2026-10-01",
+        "dateModified": "2026-10-01",
+        "mainEntityOfPage": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/",
+        "about": {
+          "@id": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/#dataset"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Magyar AI-detektor benchmark",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Módszertan",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/modszertan/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="../">
+        <img src="../assets/logo.svg" alt="" width="30" height="30">
+        <span>Magyar AI-detektor benchmark<small>HuDetect-1k, 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="../#ranglista">Ranglista</a>
+        <a href="./" aria-current="page">Módszertan</a>
+        <a href="../szakdolgozat-ai-ellenorzes/">Szakdolgozat</a>
+        <a href="../ai-detektor-valasztas/">Választási útmutató</a>
+        <a href="../en/" hreflang="en" lang="en">English</a>
+      </nav>
+      <a class="btn btn-primary btn-small header-cta" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="article-hero">
+      <div class="wrap">
+        <span class="eyebrow">Módszertan</span>
+        <h1>Így mértük a magyar AI-detektorokat</h1>
+        <p class="lead">A HuDetect-1k egy 1000 szövegből álló, nyílt magyar teszthalmaz. Ezen az oldalon leírjuk, honnan jönnek a szövegek, hogyan számoltuk a mutatókat, és hogyan ismételheted meg te is a mérést.</p>
+        <div class="article-meta">
+          <span>Mérés: <strong>2026. szeptember</strong></span>
+          <span>Adathalmaz: <strong>HuDetect-1k v1.3</strong></span>
+          <span>Licenc: <strong>CC BY 4.0</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap article-layout">
+      <article class="prose">
+        <h2 id="adathalmaz">Az adathalmaz</h2>
+        <p>A HuDetect-1k 1000 magyar nyelvű dokumentumból áll: 500-at ember írt, 500-at nagy nyelvi modell generált. Minden szöveg vagy teljesen emberi, vagy teljesen gépi, így a címke egyértelmű. Az adathalmaz nyilvános a <a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Hugging Face-en</a>, egyetlen CSV-fájlban, három oszloppal:</p>
+        <ul>
+          <li><code>text</code>: maga a dokumentum, a sortörésekkel együtt</li>
+          <li><code>label</code>: 0, ha ember írta, és 1, ha nyelvi modell generálta</li>
+          <li><code>model</code>: a generáló modell neve, emberi szövegnél <code>human</code></li>
+        </ul>
+        <p>A gépi szövegek frissen készültek a mérés előtt, és a Preds tanításában nem szerepeltek. A Preds tehát ugyanolyan ismeretlen szövegeken vizsgázott, mint a többi detektor.</p>
+
+        <h2 id="temakorok">Témakörök</h2>
+        <p>Minden témakörben pontosan ugyanannyi emberi és gépi szöveg van, így a detektor nem tudja a témából kitalálni a címkét. A szövegek hossza témakörönként párosítva van: 80 és 995 szó között mozog, a medián 198 szó.</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Témakör</th><th scope="col" class="num">Emberi</th><th scope="col" class="num">AI</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Kreatív írás</th><td class="num">70</td><td class="num">70</td></tr>
+              <tr><th scope="row">Esszé és tudományos</th><td class="num">70</td><td class="num">70</td></tr>
+              <tr><th scope="row">Általános web</th><td class="num">70</td><td class="num">70</td></tr>
+              <tr><th scope="row">Technika és IT</th><td class="num">70</td><td class="num">70</td></tr>
+              <tr><th scope="row">Hírek</th><td class="num">60</td><td class="num">60</td></tr>
+              <tr><th scope="row">Ismeretterjesztés és oktatás</th><td class="num">60</td><td class="num">60</td></tr>
+              <tr><th scope="row">Jogi és közigazgatási</th><td class="num">55</td><td class="num">55</td></tr>
+              <tr><th scope="row">Közösségi és kérdés-válasz</th><td class="num">30</td><td class="num">30</td></tr>
+              <tr><th scope="row">Tudomány és orvoslás</th><td class="num">15</td><td class="num">15</td></tr>
+              <tr><th scope="row">Összesen</th><td class="num"><strong>500</strong></td><td class="num"><strong>500</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="modellek">Generáló modellek</h2>
+        <p>Az AI-szövegeket 11 különböző nyelvi modell írta. Így a teszt nem egyetlen chatbot stílusát méri, hanem a 2026-ban elterjedt modellek széles körét.</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Modell</th><th scope="col" class="num">Szövegek</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">GPT-5.6</th><td class="num">88</td></tr>
+              <tr><th scope="row">Gemini 3.8 Flash</th><td class="num">86</td></tr>
+              <tr><th scope="row">DeepSeek V4 Flash</th><td class="num">58</td></tr>
+              <tr><th scope="row">Kimi K2.6</th><td class="num">58</td></tr>
+              <tr><th scope="row">Llama 4 Scout</th><td class="num">56</td></tr>
+              <tr><th scope="row">Qwen 3.7 Flash</th><td class="num">52</td></tr>
+              <tr><th scope="row">GLM 5.3 Flash</th><td class="num">28</td></tr>
+              <tr><th scope="row">Mistral Small</th><td class="num">27</td></tr>
+              <tr><th scope="row">Claude Haiku 4.5</th><td class="num">17</td></tr>
+              <tr><th scope="row">Grok 4.3</th><td class="num">16</td></tr>
+              <tr><th scope="row">gpt-oss-120b</th><td class="num">14</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="szures">Szűrés és minőség</h2>
+        <p>Minden szöveg ugyanazokon a szűrőkön ment át, hogy a detektorok ne formai jelekből, hanem a szöveg nyelvéből döntsenek:</p>
+        <ul>
+          <li>80 és 1000 szó közötti hossz</li>
+          <li>csak folyó szöveg, táblázatok és felsorolások nélkül</li>
+          <li>nincsenek benne elérhetőségek, oldalsablonok vagy gépi metaadatok</li>
+          <li>nincsenek angol nyelvű vagy ismétlődő részek</li>
+          <li>csak latin betűs szövegek</li>
+        </ul>
+
+        <h2 id="mutatok">A mutatók</h2>
+        <p>A mérésben az AI által írt szöveg számít pozitív esetnek. Minden mutató négy alapszámból jön ki:</p>
+        <ul>
+          <li><strong>TP</strong>: helyesen felismert AI-szöveg</li>
+          <li><strong>FP</strong>: AI-nak jelölt emberi szöveg, vagyis téves vád</li>
+          <li><strong>TN</strong>: helyesen emberinek jelölt emberi szöveg</li>
+          <li><strong>FN</strong>: emberinek hitt AI-szöveg, vagyis átengedett AI</li>
+        </ul>
+
+        <h3>Pontosság</h3>
+        <p>A helyesen besorolt szövegek aránya az összesből: <code>(TP + TN) / 1000</code>. Jó első benyomást ad, de önmagában elrejtheti, hogy a detektor milyen irányba téved.</p>
+
+        <h3>Téves vád aránya (FPR)</h3>
+        <p>Az emberi szövegek hány százalékát jelölte a detektor AI-nak: <code>FP / 500</code>. Ez a legfontosabb mutató, ha embereket ítélünk meg a detektor alapján, például dolgozatoknál vagy állásjelentkezéseknél.</p>
+
+        <h3>Átengedett AI aránya (FNR)</h3>
+        <p>A gépi szövegek hány százaléka csúszott át emberiként: <code>FN / 500</code>. Ha ez magas, a detektor nem sokat ér, még ha senkit sem vádol is meg.</p>
+
+        <h3>F1</h3>
+        <p>A precizitás (<code>TP / (TP + FP)</code>) és a felidézés (<code>TP / (TP + FN)</code>) harmonikus közepe. Csak akkor magas, ha a detektor egyszerre kapja el az AI-szövegeket, és hagyja békén az emberieket.</p>
+
+        <h3>AUROC</h3>
+        <p>Azt méri, mennyire választja szét a detektor pontszáma a két csoportot, bármilyen döntési küszöb mellett. Az 1,0 tökéletes szétválasztást jelent, a 0,5 a véletlenszerű találgatást. Ez a mutató a detektorok által adott valószínűségi pontszámból számolható.</p>
+
+        <h2 id="eredmenyek">Részletes eredmények</h2>
+        <p>Az alábbi táblázat mutatja a nyers számokat, amelyekből minden mutató kiszámolható. A rangsor és a grafikonok a <a href="../#ranglista">ranglista oldalon</a> találhatók.</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Detektor</th><th scope="col" class="num">TP</th><th scope="col" class="num">FP</th><th scope="col" class="num">TN</th><th scope="col" class="num">FN</th><th scope="col" class="num">Precizitás</th><th scope="col" class="num">Felidézés</th></tr></thead>
+            <tbody>
+<!-- build:confusion-hu -->
+<tr class="is-ours"><th scope="row">Preds 3</th><td class="num">496</td><td class="num">0</td><td class="num">500</td><td class="num">4</td><td class="num">100,00%</td><td class="num">99,2%</td></tr>
+<tr><th scope="row">GPTZero</th><td class="num">402</td><td class="num">1</td><td class="num">499</td><td class="num">98</td><td class="num">99,75%</td><td class="num">80,4%</td></tr>
+<tr><th scope="row">Originality.ai</th><td class="num">483</td><td class="num">163</td><td class="num">337</td><td class="num">17</td><td class="num">74,77%</td><td class="num">96,6%</td></tr>
+<tr><th scope="row">Plag.hu</th><td class="num">267</td><td class="num">2</td><td class="num">498</td><td class="num">233</td><td class="num">99,26%</td><td class="num">53,4%</td></tr>
+<tr><th scope="row">isgen.ai</th><td class="num">162</td><td class="num">7</td><td class="num">493</td><td class="num">338</td><td class="num">95,86%</td><td class="num">32,4%</td></tr>
+<tr><th scope="row">ZeroGPT</th><td class="num">321</td><td class="num">174</td><td class="num">326</td><td class="num">179</td><td class="num">64,85%</td><td class="num">64,2%</td></tr>
+<tr><th scope="row">Smodin</th><td class="num">131</td><td class="num">2</td><td class="num">498</td><td class="num">369</td><td class="num">98,50%</td><td class="num">26,2%</td></tr>
+<!-- /build:confusion-hu -->
+            </tbody>
+          </table>
+        </div>
+        <p>Az eredmények gépileg is feldolgozható formában letölthetők: <a href="../data/results.csv">results.csv</a> és <a href="../data/results.json">results.json</a>.</p>
+
+        <h2 id="megismetles">Megismételhetőség</h2>
+        <p>A mérést bárki megismételheti. Töltsd le az adathalmazt, futtasd le rajta a vizsgált detektort, és mentsd el a döntéseit egy <code>predictions.csv</code> fájlba, ugyanabban a sorrendben, ahogy a szövegek az adathalmazban szerepelnek. A <code>pred</code> oszlop a döntés (0 vagy 1), a <code>score</code> oszlop az AI-valószínűség. Az alábbi kód kiszámolja ugyanazokat a mutatókat:</p>
+        <pre><code>import pandas as pd
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, confusion_matrix
+
+data = pd.read_csv("hf://datasets/mihalykiss/GenAIDetectHU/hudetect1k_v1.3.csv")
+preds = pd.read_csv("predictions.csv")
+
+y, pred, score = data["label"], preds["pred"], preds["score"]
+tn, fp, fn, tp = confusion_matrix(y, pred).ravel()
+
+print(f"Pontosság: {accuracy_score(y, pred):.2%}")
+print(f"F1:        {f1_score(y, pred):.2%}")
+print(f"AUROC:     {roc_auc_score(y, score):.4f}")
+print(f"FPR:       {fp / (fp + tn):.2%}")
+print(f"FNR:       {fn / (fn + tp):.2%}")</code></pre>
+        <p>A futtatáshoz a <code>pandas</code>, a <code>huggingface_hub</code> és a <code>scikit-learn</code> csomag kell.</p>
+
+        <h2 id="korlatok">Korlátok</h2>
+        <p>Egy jó mérés a saját határait is kimondja. Ezeket érdemes szem előtt tartani:</p>
+        <ul>
+          <li>A mérés pillanatkép. A detektorok folyamatosan frissülnek, ezért az eredmények a 2026. szeptemberi állapotot mutatják.</li>
+          <li>Minden szöveg egyetlen címkét kap. Az olyan vegyes dokumentumokat, amelyeknek egyik része emberi, a másik gépi, külön érdemes vizsgálni.</li>
+          <li>A 80 szónál rövidebb szövegek nincsenek benne. Rövid szövegből minden detektor nehezebben dönt, erről a Preds blogján <a href="https://preds.hu/blog/miert-nehez-rovid-szovegbol-detektalni">részletesen is írtunk</a>.</li>
+          <li>Az adathalmazt és a mérést a Preds fejlesztője készítette, a Preds pedig maga is szerepel a versenyzők között. Ezért nyilvános minden adat: így bárki független ellenőrzést végezhet.</li>
+          <li>Egyetlen mérés sem bizonyít szerzőséget. Az AI-detektor eredménye valószínűségi jelzés, amelyet mindig más információkkal együtt kell értékelni.</li>
+        </ul>
+
+        <h2 id="hivatkozas">Hivatkozás</h2>
+        <p>Ha cikkben, szakdolgozatban vagy előadásban hivatkozol a mérésre, használhatod ezt a formát:</p>
+        <p class="callout">Kiss M. (2026). <em>HuDetect-1k: magyar AI-szövegdetektálási benchmark</em>. https://kissmihaly1.github.io/magyar-ai-detektor-teszt/</p>
+        <p>BibTeX formátumban:</p>
+        <div class="cite-box">
+          <button class="btn" type="button" data-copy="bibtex" data-done="Másolva">Másolás</button>
+          <pre><code id="bibtex">@misc{hudetect1k2026,
+  title        = {HuDetect-1k: Hungarian AI-text detection benchmark},
+  author       = {Kiss, Mih{\'a}ly},
+  year         = {2026},
+  publisher    = {Hugging Face},
+  howpublished = {\url{https://huggingface.co/datasets/mihalykiss/GenAIDetectHU}},
+  note         = {Results: \url{https://kissmihaly1.github.io/magyar-ai-detektor-teszt/}}
+}</code></pre>
+        </div>
+
+        <h2 id="tovabb">Tovább olvasnál?</h2>
+        <div class="related">
+          <a href="../#ranglista"><strong>Ranglista</strong><span>A hét detektor eredményei egy táblázatban</span></a>
+          <a href="../szakdolgozat-ai-ellenorzes/"><strong>Szakdolgozat AI-ellenőrzése</strong><span>Útmutató hallgatóknak és oktatóknak</span></a>
+          <a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU"><strong>Adathalmaz</strong><span>Az 1000 szöveg és a címkék a Hugging Face-en</span></a>
+        </div>
+      </article>
+
+      <aside class="article-aside">
+        <nav class="toc" aria-label="Tartalom">
+          <p>Tartalom</p>
+          <ol>
+            <li><a href="#adathalmaz">Az adathalmaz</a></li>
+            <li><a href="#temakorok">Témakörök</a></li>
+            <li><a href="#modellek">Generáló modellek</a></li>
+            <li><a href="#szures">Szűrés és minőség</a></li>
+            <li><a href="#mutatok">A mutatók</a></li>
+            <li><a href="#eredmenyek">Részletes eredmények</a></li>
+            <li><a href="#megismetles">Megismételhetőség</a></li>
+            <li><a href="#korlatok">Korlátok</a></li>
+            <li><a href="#hivatkozas">Hivatkozás</a></li>
+          </ol>
+        </nav>
+        <div class="aside-card">
+          <strong>Adatok letöltése</strong>
+          <p>Az 1000 szöveg a címkékkel, és a detektoronkénti eredmények CSV formátumban.</p>
+          <a class="btn btn-accent btn-small" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="../"><img src="../assets/logo.svg" alt="" width="30" height="30"><span>Magyar AI-detektor benchmark</span></a>
+          <p style="margin-top:16px">A HuDetect-1k nyílt magyar teszthalmaz AI-szövegdetektorok összehasonlításához. Az adathalmazt és a mérést a Preds fejlesztője készítette, ezért minden szöveg, címke és eredmény nyilvános és ellenőrizhető.</p>
+        </div>
+        <div>
+          <h2>Az oldalon</h2>
+          <ul>
+            <li><a href="../#ranglista">Ranglista</a></li>
+            <li><a href="./">Módszertan</a></li>
+            <li><a href="../szakdolgozat-ai-ellenorzes/">Szakdolgozat AI-ellenőrzése</a></li>
+            <li><a href="../ai-detektor-valasztas/">AI-detektor választás</a></li>
+            <li><a href="../en/" hreflang="en">English version</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Adatok</h2>
+          <ul>
+            <li><a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz (Hugging Face)</a></li>
+            <li><a href="../data/results.csv">Eredmények (CSV)</a></li>
+            <li><a href="../data/results.json">Eredmények (JSON)</a></li>
+            <li><a href="https://github.com/kissmihaly1/magyar-ai-detektor-teszt">Forráskód (GitHub)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>A szövegek és az eredmények CC BY 4.0 licenc alatt, forrásmegjelöléssel szabadon idézhetők.</span>
+        <span>Utoljára frissítve: 2026. október 1.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>

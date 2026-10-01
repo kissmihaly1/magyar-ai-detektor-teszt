@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hogyan válassz AI-detektort magyar szövegekhez? Útmutató 2026</title>
+  <meta name="description" content="Hat szempont a jó magyar AI-detektor kiválasztásához, mérési adatokkal. Mindennapi helyzetek, gyakori hibák, és hogyan teljesít a GPTZero, a ZeroGPT és a Preds magyarul.">
+  <link rel="canonical" href="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/ai-detektor-valasztas/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1510" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Magyar AI-detektor benchmark">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:url" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/ai-detektor-valasztas/">
+  <meta property="og:title" content="Hogyan válassz AI-detektort magyar szövegekhez?">
+  <meta property="og:description" content="Hat szempont, mérési adatok és gyakori hibák. Rövid útmutató mindennapi használatra.">
+  <meta property="og:image" content="https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-hu.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Hogyan válassz AI-detektort magyar szövegekhez?",
+        "description": "Hat szempont a megbízható magyar AI-detektor kiválasztásához, a HuDetect-1k mérés adataival.",
+        "inLanguage": "hu-HU",
+        "datePublished": "2026-10-01",
+        "dateModified": "2026-10-01",
+        "mainEntityOfPage": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/ai-detektor-valasztas/",
+        "image": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/assets/og-hu.png"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Van jó ingyenes AI-detektor magyar nyelvre?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A mérésben több ismert, ingyenesen is használható eszköz gyengén teljesített magyarul: vagy sok emberi szöveget vádolt meg, vagy a gépi szövegek nagy részét átengedte. A Preds naponta 2 ingyenes kreditet ad, ami nagyjából 2000 szó ellenőrzésére elég."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mennyire megbízható a GPTZero magyar szövegeken?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A HuDetect-1k mérésben a GPTZero lett a második 90,1%-os pontossággal. Alig vádolt meg embert (0,2%), viszont a gépi szövegek 19,6%-át átengedte. A Preds 3 ugyanezen a teszten 99,6%-ot ért el."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Melyik AI-detektor ismeri fel legjobban a ChatGPT-vel írt magyar szövegeket?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A tesztben a GPT-5.6 írta a legtöbb gépi szöveget, mellette további 10 nyelvi modell. Összesítve a Preds 3 ismerte fel a legtöbb gépi szöveget (500-ból 496-ot), és közben egyetlen emberi szöveget sem jelölt AI-nak."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Magyar AI-detektor benchmark",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI-detektor választás",
+            "item": "https://kissmihaly1.github.io/magyar-ai-detektor-teszt/ai-detektor-valasztas/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="../">
+        <img src="../assets/logo.svg" alt="" width="30" height="30">
+        <span>Magyar AI-detektor benchmark<small>HuDetect-1k, 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="../#ranglista">Ranglista</a>
+        <a href="../modszertan/">Módszertan</a>
+        <a href="../szakdolgozat-ai-ellenorzes/">Szakdolgozat</a>
+        <a href="./" aria-current="page">Választási útmutató</a>
+        <a href="../en/" hreflang="en" lang="en">English</a>
+      </nav>
+      <a class="btn btn-primary btn-small header-cta" href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="article-hero">
+      <div class="wrap">
+        <span class="eyebrow">Útmutató mindennapi használatra</span>
+        <h1>Hogyan válassz AI-detektort magyar szövegekhez?</h1>
+        <p class="lead">A legtöbb AI-detektor angol szövegekre készült, és magyarul sokat téved. Ez a rövid útmutató megmutatja, mire figyelj, ha megbízható eszközt keresel a mindennapokra.</p>
+        <div class="article-meta">
+          <span>Frissítve: <strong>2026. október 1.</strong></span>
+          <span>Olvasási idő: <strong>5 perc</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap article-layout">
+      <article class="prose">
+        <h2 id="szempontok">Hat szempont, amit érdemes megnézni</h2>
+
+        <h3>Mérték magyar szövegen?</h3>
+        <p>Az angol nyelvű tesztek eredménye nem vihető át a magyarra. Keress olyan mérést, amely magyar szövegeken készült, és amelynek az adatai is elérhetők. Ha egy oldal 99%-os pontosságot ígér, de nem mondja meg, min mérte, legyél óvatos.</p>
+
+        <h3>Alacsony a téves vádak aránya?</h3>
+        <p>Ez a legfontosabb szám. Ha egy detektor sok emberi szöveget jelöl AI-nak, az eredményei nem használhatók döntésre. A <a href="../">HuDetect-1k mérésben</a> ez az érték 0% és 34,8% között szórt a hét vizsgált eszköznél.</p>
+
+        <h3>Elkapja az AI-szövegek többségét?</h3>
+        <p>Az is gond, ha egy detektor senkit sem vádol meg, mert szinte mindent emberinek mond. A mérésben volt olyan eszköz, amely a gépi szövegek 73,8%-át átengedte.</p>
+
+        <h3>Megmutatja, mely mondatok gyanúsak?</h3>
+        <p>Egy összesített százalék kevés. A mondatszintű kiemelés megmutatja, hol van a gyanús rész, így az eredmény ellenőrizhető és megbeszélhető.</p>
+
+        <h3>Kezeli a dokumentumokat?</h3>
+        <p>Szakdolgozathoz, pályázathoz és hosszabb anyagokhoz fontos, hogy PDF-et és DOCX-et is fel lehessen tölteni, és ne kelljen mindent kézzel bemásolni.</p>
+
+        <h3>Ott van, ahol dolgozol?</h3>
+        <p>Egy Chrome-bővítménnyel bármely weboldalon ellenőrizhetsz, API-val pedig saját rendszerbe is beépítheted a detektálást.</p>
+
+        <h2 id="eszkozok">Hogyan teljesítenek az ismert eszközök?</h2>
+        <p>Az alábbi táblázat a HuDetect-1k mérés fő számait mutatja 1000 magyar szövegen. A téves vád és az átengedett AI esetén az alacsonyabb érték a jobb.</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Detektor</th><th scope="col" class="num">Pontosság</th><th scope="col" class="num">Téves vád</th><th scope="col" class="num">Átengedett AI</th></tr></thead>
+            <tbody>
+<!-- build:summary-hu -->
+<tr class="is-ours"><th scope="row">Preds 3</th><td class="num">99,6%</td><td class="num">0,0%</td><td class="num">0,8%</td></tr>
+<tr><th scope="row">GPTZero</th><td class="num">90,1%</td><td class="num">0,2%</td><td class="num">19,6%</td></tr>
+<tr><th scope="row">Originality.ai</th><td class="num">82,0%</td><td class="num">32,6%</td><td class="num">3,4%</td></tr>
+<tr><th scope="row">Plag.hu</th><td class="num">76,5%</td><td class="num">0,4%</td><td class="num">46,6%</td></tr>
+<tr><th scope="row">isgen.ai</th><td class="num">65,5%</td><td class="num">1,4%</td><td class="num">67,6%</td></tr>
+<tr><th scope="row">ZeroGPT</th><td class="num">64,7%</td><td class="num">34,8%</td><td class="num">35,8%</td></tr>
+<tr><th scope="row">Smodin</th><td class="num">62,9%</td><td class="num">0,4%</td><td class="num">73,8%</td></tr>
+<!-- /build:summary-hu -->
+            </tbody>
+          </table>
+        </div>
+        <p>A részletes eredmények a <a href="../#ranglista">ranglistán</a>, a mérés leírása a <a href="../modszertan/">módszertan oldalon</a> található.</p>
+
+        <h2 id="helyzetek">Mindennapi helyzetek</h2>
+
+        <h3>Házi feladatok és beadandók</h3>
+        <p>Tanárként gyorsan átnézheted a beadandókat. Ha valami gyanús, a mondatszintű kiemelés segít eldönteni, érdemes-e rákérdezni. Jó példa erre a <a href="https://preds.hu/audiences/teachers">Preds oktatóknak szóló megoldása</a>.</p>
+
+        <h3>Állásjelentkezések és motivációs levelek</h3>
+        <p>HR-esként kiszűrheted a tömegesen generált jelentkezéseket. Itt is igaz, hogy a detektor jelzés, nem ítélet: egy rövid beszélgetés többet elárul. Lásd: <a href="https://preds.hu/audiences/recruiters">AI-ellenőrzés toborzóknak</a>.</p>
+
+        <h3>Cikkek, blogok és sajtóanyagok</h3>
+        <p>Szerkesztőként ellenőrizheted a beküldött anyagokat, tartalommarketingesként pedig a külsős szövegeket. A mérés győztese külön megoldást kínál <a href="https://preds.hu/audiences/publishers">szerkesztőségeknek</a> és <a href="https://preds.hu/audiences/content-teams">tartalomcsapatoknak</a>.</p>
+
+        <h3>Weboldalak és közösségi média</h3>
+        <p>A <a href="https://preds.hu/blog/preds-chrome-bovitmeny-ai-detektalas-barmely-weboldalon">Preds Chrome-bővítménnyel</a> kijelölheted a szöveget bármely oldalon, és azonnal ellenőrizheted, anélkül hogy elhagynád az oldalt.</p>
+
+        <h3>Kézzel írt szövegek</h3>
+        <p>A Preds a kézzel írt szöveg fotójából is ki tudja olvasni a szöveget, majd ellenőrzi. Ez kézzel írt dolgozatoknál és fogalmazásoknál hasznos. A funkció az Essential és Pro csomagokban érhető el, és jelenleg korai fejlesztési fázisban van. <a href="https://preds.hu/blog/keziras-felismeres-fotobol-ai-detektalas">Részletek a kézírás-felismerésről</a>.</p>
+
+        <h2 id="hibak">Gyakori hibák</h2>
+        <ul>
+          <li>Egyetlen százalékra hagyatkozni, a mondatszintű részletek megnézése nélkül.</li>
+          <li>Nagyon rövid szövegeket ellenőrizni. Néhány mondatból minden detektor bizonytalanabb, ezért a Preds legalább 60 szót kér. <a href="https://preds.hu/blog/miert-nehez-rovid-szovegbol-detektalni">Miért nehéz rövid szövegből detektálni?</a></li>
+          <li>Angol nyelvű teszteredmények alapján választani magyar szövegekhez.</li>
+          <li>Az eredményt bizonyítéknak tekinteni, ahelyett hogy egy beszélgetés kiindulópontjaként kezelnénk.</li>
+        </ul>
+
+        <h2 id="gyik">Gyakori kérdések</h2>
+        <div class="faq">
+          <details>
+            <summary>Van jó ingyenes AI-detektor magyar nyelvre?</summary>
+            <div class="answer"><p>A mérésben több ismert, ingyenesen is használható eszköz gyengén teljesített magyarul: vagy sok emberi szöveget vádolt meg, vagy a gépi szövegek nagy részét átengedte. A Preds naponta 2 ingyenes kreditet ad, ami nagyjából 2000 szó ellenőrzésére elég.</p></div>
+          </details>
+          <details>
+            <summary>Mennyire megbízható a GPTZero magyar szövegeken?</summary>
+            <div class="answer"><p>A HuDetect-1k mérésben a GPTZero lett a második 90,1%-os pontossággal. Alig vádolt meg embert (0,2%), viszont a gépi szövegek 19,6%-át átengedte. A Preds 3 ugyanezen a teszten 99,6%-ot ért el.</p></div>
+          </details>
+          <details>
+            <summary>Melyik AI-detektor ismeri fel legjobban a ChatGPT-vel írt magyar szövegeket?</summary>
+            <div class="answer"><p>A tesztben a GPT-5.6 írta a legtöbb gépi szöveget, mellette további 10 nyelvi modell. Összesítve a Preds 3 ismerte fel a legtöbb gépi szöveget (500-ból 496-ot), és közben egyetlen emberi szöveget sem jelölt AI-nak.</p></div>
+          </details>
+        </div>
+
+        <h2 id="tovabb">Tovább olvasnál?</h2>
+        <div class="related">
+          <a href="../#ranglista"><strong>A teljes ranglista</strong><span>Hét AI-detektor eredménye 1000 magyar szövegen</span></a>
+          <a href="../szakdolgozat-ai-ellenorzes/"><strong>Szakdolgozat AI-ellenőrzése</strong><span>Útmutató hallgatóknak és oktatóknak</span></a>
+          <a href="../modszertan/"><strong>Módszertan</strong><span>Így készült a mérés, és így ismételheted meg</span></a>
+        </div>
+      </article>
+
+      <aside class="article-aside">
+        <nav class="toc" aria-label="Tartalom">
+          <p>Tartalom</p>
+          <ol>
+            <li><a href="#szempontok">Hat szempont</a></li>
+            <li><a href="#eszkozok">Az ismert eszközök</a></li>
+            <li><a href="#helyzetek">Mindennapi helyzetek</a></li>
+            <li><a href="#hibak">Gyakori hibák</a></li>
+            <li><a href="#gyik">Gyakori kérdések</a></li>
+          </ol>
+        </nav>
+        <div class="aside-card">
+          <strong>Pontosság 1000 magyar szövegen</strong>
+          <p>Preds 3: 99,6%<br>GPTZero: 90,1%<br>Originality.ai: 82,0%<br>Plag.hu: 76,5%<br>isgen.ai: 65,5%<br>ZeroGPT: 64,7%<br>Smodin: 62,9%</p>
+          <a class="btn btn-accent btn-small" href="../#ranglista">Teljes ranglista</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="../"><img src="../assets/logo.svg" alt="" width="30" height="30"><span>Magyar AI-detektor benchmark</span></a>
+          <p style="margin-top:16px">A HuDetect-1k nyílt magyar teszthalmaz AI-szövegdetektorok összehasonlításához. Az adathalmazt és a mérést a Preds fejlesztője készítette, ezért minden szöveg, címke és eredmény nyilvános és ellenőrizhető.</p>
+        </div>
+        <div>
+          <h2>Az oldalon</h2>
+          <ul>
+            <li><a href="../#ranglista">Ranglista</a></li>
+            <li><a href="../modszertan/">Módszertan</a></li>
+            <li><a href="../szakdolgozat-ai-ellenorzes/">Szakdolgozat AI-ellenőrzése</a></li>
+            <li><a href="./">AI-detektor választás</a></li>
+            <li><a href="../en/" hreflang="en">English version</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Adatok</h2>
+          <ul>
+            <li><a href="https://huggingface.co/datasets/mihalykiss/GenAIDetectHU">Adathalmaz (Hugging Face)</a></li>
+            <li><a href="../data/results.csv">Eredmények (CSV)</a></li>
+            <li><a href="../data/results.json">Eredmények (JSON)</a></li>
+            <li><a href="https://github.com/kissmihaly1/magyar-ai-detektor-teszt">Forráskód (GitHub)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>A szövegek és az eredmények CC BY 4.0 licenc alatt, forrásmegjelöléssel szabadon idézhetők.</span>
+        <span>Utoljára frissítve: 2026. október 1.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>
